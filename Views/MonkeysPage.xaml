@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="MonkeysMVVM.Views.MonkeysPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewmodel="clr-namespace:MonkeysMVVM.ViewModels"
-    Title="MonkeysPage"
-    x:DataType="viewmodel:MonkeysPageViewModel">
+        x:Class="MonkeysMVVM.Views.MonkeysPage"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:models="clr-namespace:MonkeysMVVM.Models"
+        xmlns:viewmodel="clr-namespace:MonkeysMVVM.ViewModels"
+        Title="MonkeysPage"
+        x:DataType="viewmodel:MonkeysPageViewModel">
+
     <ScrollView>
         <StackLayout>
             <Button Command="{Binding LoadMonkeysCommand}" Text="הכנס קוף" />
-            <CollectionView EmptyView="no monkeys" ItemsSource="{Binding Monkeys}" />
+            <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding LoadMonkeysCommand}">
+                <CollectionView SelectionMode="Single" SelectedItem="{Binding Monkey}" EmptyView="no monkeys" ItemsSource="{Binding Monkeys}">
+                   
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Monkey">
+                        <Frame>
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                                <Image Aspect="AspectFit" Source="{Binding ImageUrl}" />
+                                <Label Grid.Column="1" Text="{Binding Name}" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            </RefreshView>
         </StackLayout>
     </ScrollView>
 
