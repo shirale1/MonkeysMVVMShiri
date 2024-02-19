@@ -10,9 +10,10 @@
 
     <ScrollView>
         <StackLayout>
+            <Button Text="דף קופים" Command="{Binding NavigateToShowMonkey}" />
             <Button Command="{Binding LoadMonkeysCommand}" Text="הכנס קוף" />
             <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding LoadMonkeysCommand}">
-                <CollectionView SelectionMode="Single" SelectedItem="{Binding Monkey}" EmptyView="no monkeys" ItemsSource="{Binding Monkeys}">
+                <CollectionView SelectionMode="Single" SelectedItem="{Binding SelectedMonkey}" EmptyView="no monkeys" ItemsSource="{Binding Monkeys}">
                    
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Monkey">

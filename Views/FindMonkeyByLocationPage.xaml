@@ -6,7 +6,7 @@
              x:Class="MonkeysMVVM.Views.FindMonkeyByLocationPage"
              Title="FindMonkeyByLocationPage">
     <VerticalStackLayout HorizontalOptions="Center">
-
+           
         <Entry Placeholder="הכנס שם מדינה" PlaceholderColor="LightGrey" Text="{Binding Country}"/>
         <Button Text="חפש" WidthRequest="150" Command="{Binding SearchByCountryCommand}"/>
         
