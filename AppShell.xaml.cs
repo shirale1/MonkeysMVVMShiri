@@ -9,6 +9,6 @@ public partial class AppShell : Shell
 		InitializeComponent();
 		Routing.RegisterRoute("FindMonkeyByLocation", typeof(FindMonkeyByLocationPage));
 		Routing.RegisterRoute("MonkeysPage", typeof(MonkeysPage));
-		Routing.RegisterRoute("ShowMonkeyView", typeof (ShowMonkeyView));
+		Routing.RegisterRoute("ShowMonkey", typeof (ShowMonkeyView));
 	}
 }

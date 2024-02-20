@@ -33,7 +33,8 @@ namespace MonkeysMVVM.ViewModels
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add("monkey", SelectedMonkey);
-            await AppShell.Current.GoToAsync("ShowMonkeyView",data);
+            await AppShell.Current.GoToAsync($"ShowMonkey?title=פרטי הקוף {SelectedMonkey.Name}",data);
+            SelectedMonkey= null; 
            
         }
 
