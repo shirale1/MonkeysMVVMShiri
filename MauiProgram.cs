@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using MonkeysMVVM.Services;
+using MonkeysMVVM.ViewModels;
+using MonkeysMVVM.Views;
 
 namespace MonkeysMVVM;
 
@@ -17,8 +20,21 @@ public static class MauiProgram
 
 #if DEBUG
 		builder.Logging.AddDebug();
+		builder.Services.AddSingleton<MonkeysService>();
+
+
+		builder.Services.AddTransient<FindMonkeyByLocationPageViewModel>();
+        builder.Services.AddTransient<MonkeysPageViewModel>();
+        builder.Services.AddTransient<ShowMonkeyViewModel>();
+
+		
+
+        builder.Services.AddTransient<FindMonkeyByLocationPage>();
+        builder.Services.AddTransient<MonkeysPage>();
+        builder.Services.AddTransient<ShowMonkeyView>();
+
 #endif
 
-		return builder.Build();
+        return builder.Build();
 	}
 }
