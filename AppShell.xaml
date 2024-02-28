@@ -1,27 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-        x:Class="MonkeysMVVM.AppShell"
+<Shell 
+    
+    x:Class="MonkeysMVVM.AppShell"
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:local="clr-namespace:MonkeysMVVM.Views"
-        Shell.FlyoutBehavior="Disabled">
+        Shell.FlyoutBehavior="Flyout">
 
-    <Tabar Shell.TabBarUnselectedColor="Grey">
+ 
+    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems" Icon="home.png">
+        
         <ShellContent
-                ContentTemplate="{DataTemplate ViewCell:MenuPage}"
-                Icon="home.png"
-                Route="HomePage" />
-        <Tab Icon="search.png">
-            <ShellContent
-                    Title="סינון"
-                    ContentTemplate="{DataTemplate views:FindMonkeyByLocationPage}"
-                    Icon="search.png" />
-            <ShellContent Title="רענון" ContentTemplate="{DataTemplate views:MonkeyPage}" />
-        </Tab>
-    </Tabar>
-    <ShellContent
-            Title="Home"
-            ContentTemplate="{DataTemplate local:MonkeysPage}"
-            Route="MainPage" />
+           ContentTemplate="{DataTemplate local:ShowMonkeyView}"
+            Icon="home.png"
+            
+            Route="HomePage"/>
+        <ShellContent
+            Title="חיפוש"
+            ContentTemplate="{DataTemplate local:FindMonkeyByLocationPage}"
+            Icon="search.png"/>
+        
+        <ShellContent Title="רענון" ContentTemplate="{DataTemplate local:MonkeysPage}"/>
+        
+    </FlyoutItem>
 
 </Shell>
+
+
+<!--<TabBar Shell.TabBarUnselectedColor="Grey">
+      <ShellContent
+              ContentTemplate="{DataTemplate local:ShowMonkeyView}"
+              Icon="home.png"
+              Route="HomePage" />
+      <Tab Icon="search.png">
+          <ShellContent
+                  Title="סינון"
+                  ContentTemplate="{DataTemplate local:FindMonkeyByLocationPage}"
+                  Icon="search.png" />
+          <ShellContent Title="רענון" ContentTemplate="{DataTemplate local:MonkeysPage}" />
+      </Tab>
+  </TabBar>
+  <ShellContent
+          Title="Home"
+          ContentTemplate="{DataTemplate local:MonkeysPage}"
+          Route="MainPage" />-->
